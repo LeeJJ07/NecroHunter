@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem.EnhancedTouch;
@@ -14,7 +11,8 @@ public class PlayerInputHandler : MonoBehaviour
     private Vector2 movementAmount;
 
     private Vector2 startFingerPosition;
-    [SerializeField] private float maxMovement = 150.0f;
+
+    private float maxMovement = 100.0f;
 
     private void OnEnable()
     {
@@ -34,45 +32,45 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void HandleFingerMove(Finger movedFinger)
     {
-        if(movedFinger == movementFinger)
+        if (movedFinger != movementFinger)
+            return;
+
+        Vector2 knobPosition;
+        ETouch.Touch currentTouch = movedFinger.currentTouch;
+
+        if (Vector2.Distance(currentTouch.screenPosition,
+            startFingerPosition) > maxMovement)
         {
-            Vector2 knobPosition;
-            ETouch.Touch currentTouch = movedFinger.currentTouch;
-
-            if(Vector2.Distance(currentTouch.screenPosition,
-                startFingerPosition) > maxMovement)
-            {
-                knobPosition = (
-                    currentTouch.screenPosition - startFingerPosition
-                    ).normalized * maxMovement;
-            }
-            else
-            {
-                knobPosition = currentTouch.screenPosition - startFingerPosition;
-            }
-
-            movementAmount = knobPosition / maxMovement;
-            Debug.Log(movementAmount);
+            knobPosition = (
+                currentTouch.screenPosition - startFingerPosition
+                ).normalized * maxMovement;
         }
+        else
+        {
+            knobPosition = currentTouch.screenPosition - startFingerPosition;
+        }
+
+        movementAmount = knobPosition / maxMovement;
+        Debug.Log(movementAmount);
+
     }
     private void HandleLoseFinger(Finger lostFinger)
     {
-        if(lostFinger == movementFinger)
-        {
-            movementFinger = null;
-            movementAmount = Vector2.zero;
-            startFingerPosition = Vector2.zero;
-        }
+        if (lostFinger != movementFinger)
+            return;
+
+        movementFinger = null;
+        movementAmount = Vector2.zero;
+        startFingerPosition = Vector2.zero;
     }
     private void HandleFingerDown(Finger touchedFinger)
     {
-        if(movementFinger == null)
-        {
-            movementFinger = touchedFinger;
-            movementAmount = Vector2.zero;
+        if (movementFinger != null)
+            return;
 
-            startFingerPosition = touchedFinger.screenPosition;
-        }
+        movementFinger = touchedFinger;
+        movementAmount = Vector2.zero;
+        startFingerPosition = touchedFinger.screenPosition;
     }
 
     private void Update()
