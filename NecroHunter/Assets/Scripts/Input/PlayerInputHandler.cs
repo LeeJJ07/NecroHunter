@@ -1,17 +1,14 @@
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.InputSystem.EnhancedTouch;
 using ETouch = UnityEngine.InputSystem.EnhancedTouch;
 
 public class PlayerInputHandler : MonoBehaviour
 {
-    [SerializeField] private NavMeshAgent player;
+    public Vector2 MovementInput { get; private set; }
 
     private Finger movementFinger;
-    private Vector2 movementAmount;
 
     private Vector2 startFingerPosition;
-
     private float maxMovement = 100.0f;
 
     private void OnEnable()
@@ -50,8 +47,7 @@ public class PlayerInputHandler : MonoBehaviour
             knobPosition = currentTouch.screenPosition - startFingerPosition;
         }
 
-        movementAmount = knobPosition / maxMovement;
-        Debug.Log(movementAmount);
+        MovementInput = knobPosition / maxMovement;
 
     }
     private void HandleLoseFinger(Finger lostFinger)
@@ -59,8 +55,8 @@ public class PlayerInputHandler : MonoBehaviour
         if (lostFinger != movementFinger)
             return;
 
+        MovementInput = Vector2.zero;
         movementFinger = null;
-        movementAmount = Vector2.zero;
         startFingerPosition = Vector2.zero;
     }
     private void HandleFingerDown(Finger touchedFinger)
@@ -68,20 +64,8 @@ public class PlayerInputHandler : MonoBehaviour
         if (movementFinger != null)
             return;
 
+        MovementInput = Vector2.zero;
         movementFinger = touchedFinger;
-        movementAmount = Vector2.zero;
         startFingerPosition = touchedFinger.screenPosition;
-    }
-
-    private void Update()
-    {
-        Vector3 scaledMovement = player.speed * Time.deltaTime * new Vector3(
-            movementAmount.x,
-            0.0f,
-            movementAmount.y
-        );
-
-        player.Move(scaledMovement);
-        player.transform.LookAt(player.transform.position + scaledMovement, Vector3.up);
     }
 }
