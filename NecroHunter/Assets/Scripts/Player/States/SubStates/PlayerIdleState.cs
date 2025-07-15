@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PlayerIdleState : PlayerState
 {
     public PlayerIdleState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
@@ -12,6 +14,9 @@ public class PlayerIdleState : PlayerState
     public override void Enter()
     {
         base.Enter();
+
+       if(IsHarvestableObjectNearby())
+            stateMachine.ChangeState(player.HarvestState);
     }
 
     public override void Exit()
@@ -30,5 +35,16 @@ public class PlayerIdleState : PlayerState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+    }
+
+    private bool IsHarvestableObjectNearby()
+    {
+        Vector3 harvestObjPos = player.FindHarvestableObject();
+
+        if (harvestObjPos == Vector3.zero)
+            return false;
+
+        player.transform.LookAt(harvestObjPos, Vector3.up);
+        return true;
     }
 }

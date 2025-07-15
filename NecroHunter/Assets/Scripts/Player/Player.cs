@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public PlayerStateMachine StateMachine { get; private set; }
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
+    public PlayerHarvestState HarvestState { get; private set; } 
     #endregion
 
     #region Components
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour
 
         IdleState = new PlayerIdleState(this, StateMachine, playerData, "idle");
         MoveState = new PlayerMoveState(this, StateMachine, playerData, "move");
+        HarvestState = new PlayerHarvestState(this, StateMachine, playerData, "harvest");
     }
     private void Start()
     {
@@ -61,4 +63,13 @@ public class Player : MonoBehaviour
 
         return Vector3.zero;
     }
+    void OnDrawGizmosSelected()
+    {
+        if (playerData == null)
+            return;
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, playerData.detectionRadius);
+    }
+
 }
