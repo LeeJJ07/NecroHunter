@@ -6,5 +6,5 @@ public interface IHarvestable
 {
     ResourceData ResourceData { get; }
 
-    void Harvest(int damage);
+    void Harvested(int damage);
 }

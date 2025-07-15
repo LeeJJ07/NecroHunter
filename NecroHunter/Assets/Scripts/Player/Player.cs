@@ -55,17 +55,12 @@ public class Player : MonoBehaviour
     }
     #endregion
 
-    public void EquipTool(int toolIndex)
+    public void SetToolActive(int toolIndex, bool active)
     {
-        curWeapon.SetActive(false);
-        tools[toolIndex].SetActive(true);
-    }
-    public void UnEquipTool(int toolIndex)
-    {
-        tools[toolIndex].SetActive(false);
-        curWeapon.SetActive(true);
+        curWeapon.SetActive(!active);
+        tools[toolIndex].SetActive(active);
 
-        HarvestableTarget = null;
+        if (!active) HarvestableTarget = null;
     }
 
     public Vector3 FindHarvestableObject()
@@ -83,6 +78,12 @@ public class Player : MonoBehaviour
         }
 
         return Vector3.zero;
+    }
+
+    public void PerformHarvestAction()
+    {
+        Debug.Log("Tung Tung Tung");
+        HarvestableTarget?.Harvested(5); // temp power;
     }
     void OnDrawGizmosSelected()
     {

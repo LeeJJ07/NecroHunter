@@ -14,12 +14,13 @@ public abstract class HarvestableObject : MonoBehaviour, IHarvestable
         currentDurability = data.initialDurability;
     }
 
-    public void Harvest(int harvestPower)
+    public void Harvested(int harvestPower)
     {
         currentDurability -= harvestPower;
 
         if (currentDurability <= 0)
         {
+            Destroy(gameObject);
             // Destroy Resource
         }
     }
