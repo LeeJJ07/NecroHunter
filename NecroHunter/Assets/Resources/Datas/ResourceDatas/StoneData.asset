@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceType: 1
   initialDurability: 15
+  fragment: {fileID: 5677926987269898666, guid: 1a89fae58a423994b9c45d09c4513d04,
+    type: 3}
+  fragemntAmount: 7

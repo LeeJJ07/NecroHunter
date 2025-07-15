@@ -23,6 +23,6 @@ public abstract class HarvestableObject : MonoBehaviour, IHarvestable
             OnDepleted();
         }
     }
-
+    protected abstract void EmitHarvestFragments();
     protected abstract void OnDepleted();
 }

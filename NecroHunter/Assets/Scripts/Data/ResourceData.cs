@@ -9,4 +9,5 @@ public class ResourceData : ScriptableObject
     public int initialDurability;
 
     public GameObject fragment;
+    public int fragemntAmount;
 }
