@@ -20,8 +20,7 @@ public abstract class HarvestableObject : MonoBehaviour, IHarvestable
 
         if (currentDurability <= 0)
         {
-            Destroy(gameObject);
-            // Destroy Resource
+            OnDepleted();
         }
     }
 

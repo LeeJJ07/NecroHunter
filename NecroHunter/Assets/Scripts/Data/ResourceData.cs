@@ -7,4 +7,6 @@ public class ResourceData : ScriptableObject
 {
     public EResourceType resourceType;
     public int initialDurability;
+
+    public GameObject fragment;
 }
