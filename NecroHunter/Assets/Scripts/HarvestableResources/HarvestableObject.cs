@@ -5,7 +5,9 @@ using UnityEngine;
 public abstract class HarvestableObject : MonoBehaviour, IHarvestable
 {
     [SerializeField] private ResourceData data;
+    public ResourceData ResourceData { get => data; }
     private int currentDurability;
+
 
     private void Start()
     {

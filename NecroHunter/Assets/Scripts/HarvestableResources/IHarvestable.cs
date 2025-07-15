@@ -4,5 +4,7 @@ using UnityEngine;
 
 public interface IHarvestable
 {
+    ResourceData ResourceData { get; }
+
     void Harvest(int damage);
 }
