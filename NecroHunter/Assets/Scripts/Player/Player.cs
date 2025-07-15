@@ -45,4 +45,20 @@ public class Player : MonoBehaviour
         StateMachine.CurrentState.PhysicsUpdate();
     }
     #endregion
+
+    public Vector3 FindHarvestableObject()
+    {
+        Collider[] hits = Physics.OverlapSphere(transform.position, playerData.detectionRadius);
+
+        foreach(var hit in hits)
+        {
+            IHarvestable harvetable = hit.GetComponent<IHarvestable>();
+            if (harvetable == null)
+                continue;
+
+            return hit.transform.position;
+        }
+
+        return Vector3.zero;
+    }
 }
