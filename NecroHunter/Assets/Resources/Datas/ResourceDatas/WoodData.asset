@@ -17,3 +17,7 @@ MonoBehaviour:
   fragment: {fileID: 5641831518799658876, guid: 81e01cbf3adb92d4392f1a39ce05445e,
     type: 3}
   fragemntAmount: 5
+  fragmentSpreadRadius: 1.5
+  fragmentVerticalBoost: 1
+  fragmentMinMoveTime: 0.3
+  fragmentMaxMoveTime: 0.6

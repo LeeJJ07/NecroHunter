@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 public class PlayerHarvestState : PlayerState
 {
     public PlayerHarvestState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
@@ -27,6 +29,9 @@ public class PlayerHarvestState : PlayerState
 
         if (movementAmount.magnitude != 0.0f)
             stateMachine.ChangeState(player.MoveState);
+
+        if (player.HarvestableTarget.Equals(null))
+            stateMachine.ChangeState(player.IdleState);
     }
 
     public override void PhysicsUpdate()
@@ -36,7 +41,7 @@ public class PlayerHarvestState : PlayerState
 
     private void SetHarvestState(bool active)
     {
-        if (player.HarvestableTarget == null)
+        if (player.HarvestableTarget == null && active)
             return;
 
         int resourceType = (int)player.HarvestableTarget.ResourceData.resourceType;

@@ -82,8 +82,7 @@ public class Player : MonoBehaviour
 
     public void PerformHarvestAction()
     {
-        Debug.Log("Tung Tung Tung");
-        HarvestableTarget?.Harvested(5); // temp power;
+        HarvestableTarget?.Harvested(5);
     }
     void OnDrawGizmosSelected()
     {
