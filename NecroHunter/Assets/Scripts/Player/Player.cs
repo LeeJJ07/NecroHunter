@@ -19,6 +19,13 @@ public class Player : MonoBehaviour
     #region Other Variables
     [SerializeField]
     private PlayerData playerData;
+
+    public IHarvestable HarvestableTarget { get; private set; }
+
+    [SerializeField]
+    private GameObject curWeapon;
+    [SerializeField]
+    private GameObject[] tools;
     #endregion
 
     #region Unity Callback Functions
@@ -48,16 +55,30 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    public void EquipTool(int toolIndex)
+    {
+        curWeapon.SetActive(false);
+        tools[toolIndex].SetActive(true);
+    }
+    public void UnEquipTool(int toolIndex)
+    {
+        tools[toolIndex].SetActive(false);
+        curWeapon.SetActive(true);
+
+        HarvestableTarget = null;
+    }
+
     public Vector3 FindHarvestableObject()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, playerData.detectionRadius);
 
         foreach(var hit in hits)
         {
-            IHarvestable harvetable = hit.GetComponent<IHarvestable>();
-            if (harvetable == null)
+            IHarvestable harvestable = hit.GetComponent<IHarvestable>();
+            if (harvestable == null)
                 continue;
 
+            HarvestableTarget = harvestable;
             return hit.transform.position;
         }
 

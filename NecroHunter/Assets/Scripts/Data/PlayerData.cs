@@ -9,5 +9,7 @@ public class PlayerData : ScriptableObject
     [Header("Move State")]
     public float moveSpeed = 3.0f;
 
+    [Header("Harvest State")]
+    public string[] harvestAnimNames;
 
 }

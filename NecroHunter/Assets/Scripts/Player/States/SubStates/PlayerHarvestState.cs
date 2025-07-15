@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class PlayerHarvestState : PlayerState
 {
     public PlayerHarvestState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
@@ -16,11 +12,13 @@ public class PlayerHarvestState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        SetHarvestState(true);
     }
 
     public override void Exit()
     {
         base.Exit();
+        SetHarvestState(false);
     }
 
     public override void LogicUpdate()
@@ -35,4 +33,16 @@ public class PlayerHarvestState : PlayerState
     {
         base.PhysicsUpdate();
     }
+
+    private void SetHarvestState(bool active)
+    {
+        if (player.HarvestableTarget == null)
+            return;
+
+        int resourceType = (int)player.HarvestableTarget.ResourceData.resourceType;
+        player.SetToolActive(resourceType, active);
+
+        player.Anim.SetBool(playerData.harvestAnimNames[resourceType], active);
+    }
+
 }
