@@ -190,6 +190,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c972b09997e24704f93755d8d4fb78ef, type: 3}
+--- !u!1 &117789404 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 959851446585870564, guid: 3c6a4ed600361544a83bd3da813dd294,
+    type: 3}
+  m_PrefabInstance: {fileID: 7376853889582261296}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &149122089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -980,8 +986,8 @@ GameObject:
   - component: {fileID: 440643948}
   - component: {fileID: 440643947}
   - component: {fileID: 440643946}
-  - component: {fileID: 440643950}
   - component: {fileID: 440643951}
+  - component: {fileID: 440643950}
   m_Layer: 0
   m_Name: Stone
   m_TagString: Untagged
@@ -1528,8 +1534,8 @@ GameObject:
   - component: {fileID: 903473278}
   - component: {fileID: 903473277}
   - component: {fileID: 903473276}
-  - component: {fileID: 903473280}
   - component: {fileID: 903473281}
+  - component: {fileID: 903473280}
   m_Layer: 0
   m_Name: Wood
   m_TagString: Untagged
@@ -1814,6 +1820,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8785013135621386796, guid: c972b09997e24704f93755d8d4fb78ef,
     type: 3}
   m_PrefabInstance: {fileID: 456351563}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1164065572 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3692947311236500230, guid: 3c6a4ed600361544a83bd3da813dd294,
+    type: 3}
+  m_PrefabInstance: {fileID: 7376853889582261296}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1187493668 stripped
 Transform:
@@ -2349,6 +2361,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1897516515}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2102732279 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2280462912409706069, guid: 3c6a4ed600361544a83bd3da813dd294,
+    type: 3}
+  m_PrefabInstance: {fileID: 7376853889582261296}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2111496358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8785013135621386796, guid: c972b09997e24704f93755d8d4fb78ef,
@@ -2446,6 +2464,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2925773693911954617, guid: 3c6a4ed600361544a83bd3da813dd294,
+        type: 3}
+      propertyPath: curWeapon
+      value: 
+      objectReference: {fileID: 2102732279}
+    - target: {fileID: 2925773693911954617, guid: 3c6a4ed600361544a83bd3da813dd294,
+        type: 3}
+      propertyPath: tools.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925773693911954617, guid: 3c6a4ed600361544a83bd3da813dd294,
+        type: 3}
+      propertyPath: tools.Array.data[0]
+      value: 
+      objectReference: {fileID: 1164065572}
+    - target: {fileID: 2925773693911954617, guid: 3c6a4ed600361544a83bd3da813dd294,
+        type: 3}
+      propertyPath: tools.Array.data[1]
+      value: 
+      objectReference: {fileID: 117789404}
     - target: {fileID: 3366486688196143219, guid: 3c6a4ed600361544a83bd3da813dd294,
         type: 3}
       propertyPath: m_Name
