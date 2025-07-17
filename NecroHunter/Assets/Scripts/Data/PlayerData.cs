@@ -8,4 +8,8 @@ public class PlayerData : ScriptableObject
 
     [Header("Harvest State")]
     public string[] harvestAnimNames;
+
+    [Header("Hauling State")]
+    public int maxCountHaulResource = 5;
+    public float decreaseSpeedPerHaulResource = -0.2f;
 }

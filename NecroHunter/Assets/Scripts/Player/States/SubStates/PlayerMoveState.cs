@@ -37,6 +37,9 @@ public class PlayerMoveState : PlayerState
         if (movementAmount.magnitude == 0.0f)
         {
             stateMachine.ChangeState(player.IdleState);
+        }else if (player.IsHauling())
+        {
+            stateMachine.ChangeState(player.HaulingState);
         }
     }
 

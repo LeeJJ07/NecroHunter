@@ -16,3 +16,5 @@ MonoBehaviour:
   harvestAnimNames:
   - swingAxe
   - swingPickAxe
+  maxCountHaulResource: 5
+  decreaseSpeedPerHaulResource: -0.35
