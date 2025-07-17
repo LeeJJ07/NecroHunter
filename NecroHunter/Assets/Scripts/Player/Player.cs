@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public PlayerIdleState IdleState { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
     public PlayerHarvestState HarvestState { get; private set; } 
+    public PlayerHaulingState HaulingState { get; private set; }
     #endregion
 
     #region Components
@@ -38,6 +39,7 @@ public class Player : MonoBehaviour
         IdleState = new PlayerIdleState(this, StateMachine, playerData, "idle");
         MoveState = new PlayerMoveState(this, StateMachine, playerData, "move");
         HarvestState = new PlayerHarvestState(this, StateMachine, playerData, "harvest");
+        HaulingState = new PlayerHaulingState(this, StateMachine, playerData, "hauling");
     }
     private void Start()
     {
@@ -58,6 +60,7 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    #region About HarvestState Functions
     public void SetToolActive(int toolIndex, bool active)
     {
         curWeapon.SetActive(!active);
@@ -82,11 +85,20 @@ public class Player : MonoBehaviour
 
         return Vector3.zero;
     }
+    #endregion
 
+    #region About HaulingState Functions
+
+    #endregion
+
+    #region Animator Event
     public void PerformHarvestAction()
     {
         HarvestableTarget?.Harvested(5);
     }
+    #endregion
+
+    #region Gizmos
     void OnDrawGizmosSelected()
     {
         if (playerData == null)
@@ -95,5 +107,5 @@ public class Player : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, playerData.detectionRadius);
     }
-
+    #endregion
 }
