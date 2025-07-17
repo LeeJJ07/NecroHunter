@@ -25,7 +25,7 @@ public class PlayerMoveState : PlayerState
     {
         base.LogicUpdate();
 
-        Vector3 scaledMovement = playerData.moveSpeed * Time.deltaTime * new Vector3(
+        Vector3 scaledMovement = player.StatHandler.GetStat(EStatType.MOVE_SPEED) * Time.deltaTime * new Vector3(
             movementAmount.x,
             0.0f,
             movementAmount.y

@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     public Animator Anim { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
     public NavMeshAgent Agent { get; private set; }
+
+    public StatHandler StatHandler { get; private set; }
     #endregion
 
     #region Other Variables
@@ -42,6 +44,7 @@ public class Player : MonoBehaviour
         Anim = GetComponent<Animator>();
         InputHandler = GetComponent<PlayerInputHandler>();
         Agent = GetComponent<NavMeshAgent>();
+        StatHandler = GetComponent<StatHandler>();
 
         StateMachine.Initialize(IdleState);
     }
