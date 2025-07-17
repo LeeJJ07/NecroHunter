@@ -29,8 +29,7 @@ public class PlayerHarvestState : PlayerState
 
         if (movementAmount.magnitude != 0.0f)
             stateMachine.ChangeState(player.MoveState);
-
-        if (player.HarvestableTarget.Equals(null))
+        else if (player.HarvestableTarget.Equals(null))
             stateMachine.ChangeState(player.IdleState);
     }
 
