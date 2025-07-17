@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   detectionRadius: 1
-  moveSpeed: 3.5
   harvestAnimNames:
   - swingAxe
   - swingPickAxe

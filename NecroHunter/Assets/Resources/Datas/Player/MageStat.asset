@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4461a535e7457a947840c3dca50b32de, type: 3}
   m_Name: MageStat
   m_EditorClassIdentifier: 
-  characterName: 
-  stats: []
+  characterName: Mage
+  stats:
+  - statType: 0
+    baseValue: 100
+  - statType: 1
+    baseValue: 1
+  - statType: 2
+    baseValue: 5
