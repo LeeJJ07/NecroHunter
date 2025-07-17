@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - HarvestResource
+  - Wood
+  - Stone
+  - Gold
   layers:
   - Default
   - TransparentFX
