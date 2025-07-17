@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private PlayerData playerData;
 
+    private int currentHaulCount;
     public IHarvestable HarvestableTarget { get; private set; }
 
     [SerializeField]
@@ -60,6 +61,28 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    #region About HaulingState Functions
+    public bool IsHauling()
+    {
+        return currentHaulCount > 0;
+    }
+    public bool CanGetHaulResource()
+    {
+        return currentHaulCount < playerData.maxCountHaulResource;
+    }
+    public void GetHaulResource()
+    {
+        currentHaulCount++;
+        StatHandler.ModifyStat(EStatType.MOVE_SPEED, playerData.decreaseSpeedPerHaulResource);
+    }
+    public void ClearHaulResource()
+    {
+        float recoveredSpeed = -playerData.decreaseSpeedPerHaulResource * currentHaulCount;
+        StatHandler.ModifyStat(EStatType.MOVE_SPEED, recoveredSpeed);
+        currentHaulCount = 0;
+    }
+    #endregion
+
     #region About HarvestState Functions
     public void SetToolActive(int toolIndex, bool active)
     {
@@ -85,10 +108,6 @@ public class Player : MonoBehaviour
 
         return Vector3.zero;
     }
-    #endregion
-
-    #region About HaulingState Functions
-
     #endregion
 
     #region Animator Event
