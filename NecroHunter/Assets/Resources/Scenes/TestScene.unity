@@ -357,7 +357,7 @@ Transform:
   m_GameObject: {fileID: 48693724}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.418552, y: -11.387601, z: -0.6480672}
+  m_LocalPosition: {x: 0, y: 0.809, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -395,11 +395,11 @@ MonoBehaviour:
   partPrefab: {fileID: 2012448311944278041, guid: 384174fb4551b604e86f162d0cf7df7e,
     type: 3}
   parentObject: {fileID: 48693724}
-  length: 4
-  partDistance: 0.21
+  length: 5
+  partDistance: 0.1
   reset: 0
   spawn: 0
-  snapFirst: 1
+  snapFirst: 0
   snapLast: 1
 --- !u!4 &701409245
 Transform:
