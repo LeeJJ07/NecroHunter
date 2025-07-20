@@ -18,7 +18,12 @@ public class HaulResourceScanner : MonoBehaviour
             return;
         if (!player.CanGetHaulResource())
             return;
+        if (other.GetComponent<FragmentResource>().IsLinkedToPlayer)
+            return;
+        
         Debug.Log("Current Speed = " + player.StatHandler.GetStat(EStatType.MOVE_SPEED));
         player.GetHaulResource();
+
+        other.GetComponent<FragmentResource>().SetPlayer(player.gameObject);
     }
 }

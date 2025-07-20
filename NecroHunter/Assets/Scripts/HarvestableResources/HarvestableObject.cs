@@ -30,7 +30,7 @@ public abstract class HarvestableObject : MonoBehaviour, IHarvestable
         {
             Vector3 targetPos = FragmentTargetPos();
 
-            GameObject fragment = Instantiate(ResourceData.fragment, transform.position, Quaternion.identity);
+            GameObject fragment = ObjectPoolManager.SpawnObject(data.fragment, transform.position, Quaternion.identity);
 
             float duration = Random.Range(data.fragmentMinMoveTime, data.fragmentMaxMoveTime);
             fragment.transform.DOMove(targetPos, duration).SetEase(Ease.OutBack);

@@ -30,6 +30,9 @@ public class Player : MonoBehaviour
     private GameObject curWeapon;
     [SerializeField]
     private GameObject[] tools;
+
+    public Transform RopePoint { get { return ropePoint; } }
+    [SerializeField] private Transform ropePoint;
     #endregion
 
     #region Unity Callback Functions

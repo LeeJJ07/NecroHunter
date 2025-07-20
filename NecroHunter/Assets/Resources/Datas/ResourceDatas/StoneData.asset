@@ -16,7 +16,7 @@ MonoBehaviour:
   initialDurability: 15
   fragment: {fileID: 5677926987269898666, guid: 1a89fae58a423994b9c45d09c4513d04,
     type: 3}
-  fragemntAmount: 7
+  fragemntAmount: 1
   fragmentSpreadRadius: 1.3
   fragmentVerticalBoost: 1
   fragmentMinMoveTime: 0.25
