@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class HarvestableObject : MonoBehaviour, IHarvestable
 {
@@ -9,6 +10,12 @@ public abstract class HarvestableObject : MonoBehaviour, IHarvestable
     public ResourceData ResourceData { get => data; }
     private int currentDurability;
 
+    protected NavMeshObstacle navMeshObstacle;
+
+    private void Awake()
+    {
+        navMeshObstacle = GetComponent<NavMeshObstacle>();
+    }
 
     private void Start()
     {

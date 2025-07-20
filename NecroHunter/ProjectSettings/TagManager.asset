@@ -8,6 +8,8 @@ TagManager:
   - Wood
   - Stone
   - Gold
+  - ResourceCollectorZone
+  - BaseCamp
   layers:
   - Default
   - TransparentFX
