@@ -78,6 +78,12 @@ public class Player : MonoBehaviour
         currentHaulCount++;
         StatHandler.ModifyStat(EStatType.MOVE_SPEED, playerData.decreaseSpeedPerHaulResource);
     }
+    public void ReturnHaulResource() 
+    {
+        currentHaulCount--;
+        StatHandler.ModifyStat(EStatType.MOVE_SPEED, -playerData.decreaseSpeedPerHaulResource);
+    }
+
     public void ClearHaulResource()
     {
         float recoveredSpeed = -playerData.decreaseSpeedPerHaulResource * currentHaulCount;
