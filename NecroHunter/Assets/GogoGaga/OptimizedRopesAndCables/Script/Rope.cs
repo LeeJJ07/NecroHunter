@@ -74,10 +74,13 @@ namespace GogoGaga.OptimizedRopesAndCables
         
         
         public bool IsPrefab => gameObject.scene.rootCount == 0;
-        
-        private void Start()
+
+        private void Awake()
         {
             InitializeLineRenderer();
+        }
+        private void Start()
+        {
             if (AreEndPointsValid())
             {
                 currentValue = GetMidPoint();
