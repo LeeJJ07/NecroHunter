@@ -35,6 +35,9 @@ public class PlayerIdleState : PlayerState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+
+        if (player.TargetMonster != null)
+            player.transform.LookAt(player.TargetMonster.transform.position, Vector3.up);
     }
 
     private bool IsHarvestableObjectNearby()

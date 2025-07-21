@@ -35,6 +35,13 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform ropePoint;
     #endregion
 
+    #region About Attack Variables
+    [Header("Monster Info")]
+    [SerializeField] private LayerMask monsterLayer;
+
+    public Transform TargetMonster { get; private set; }
+    #endregion
+
     #region Unity Callback Functions
     private void Awake()
     {
@@ -61,6 +68,8 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         StateMachine.CurrentState.PhysicsUpdate();
+
+        SetNearestMonster();
     }
     #endregion
 
@@ -119,6 +128,30 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    #region About Attack
+
+    public void SetNearestMonster()
+    {
+        Collider[] hits = Physics.OverlapSphere(transform.position, playerData.attackDistance, monsterLayer);
+
+        Transform closest = null;
+        float minDist = Mathf.Infinity;
+
+        foreach (var hit in hits)
+        {
+            float dist = Vector3.Distance(transform.position, hit.transform.position);
+            if (dist < minDist)
+            {
+                minDist = dist;
+                closest = hit.transform;
+            }
+        }
+
+        TargetMonster = closest;
+    }
+
+    #endregion
+
     #region Animator Event
     public void PerformHarvestAction()
     {
@@ -134,6 +167,10 @@ public class Player : MonoBehaviour
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, playerData.detectionRadius);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, playerData.attackDistance);
     }
+
     #endregion
 }

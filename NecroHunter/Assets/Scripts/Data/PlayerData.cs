@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     [Header("Idle State")]
-    public float detectionRadius = 5.0f;
+    public float detectionRadius = 1.0f;
 
     [Header("Harvest State")]
     public string[] harvestAnimNames;
@@ -12,4 +12,7 @@ public class PlayerData : ScriptableObject
     [Header("Hauling State")]
     public int maxCountHaulResource = 5;
     public float decreaseSpeedPerHaulResource = -0.2f;
+
+    [Header("Attack")]
+    public float attackDistance = 5.0f;
 }
